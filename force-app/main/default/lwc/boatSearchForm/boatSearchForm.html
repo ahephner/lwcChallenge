@@ -1,0 +1,16 @@
+<template>
+    <lightning-layout multiple-rows>
+    <lightning-layout-item>
+        <lightning-card title='Find a Boat'>
+        </lightning-card>
+    </lightning-layout-item>
+    <lightning-layout-item class="slds-align-middle" size='12'>
+        <lightning-combobox class="slds-align-middle slds-text-align_left"
+            name='Boat Type'
+            placeholder='All Types'
+            value={selectedBoatTypeId}
+            options={searchOptions}
+            onchange={handleSearchOptionChange}></lightning-combobox>
+      </lightning-layout-item>
+    </lightning-layout>
+  </template>
