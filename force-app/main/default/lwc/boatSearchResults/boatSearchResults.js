@@ -66,7 +66,7 @@ export default class BoatSearchResults extends LightningElement {
                     variant: 'success'
                 })
             );
-    
+
              // Display fresh data in the datatable
            return this.refresh()
         }).catch(error => {
