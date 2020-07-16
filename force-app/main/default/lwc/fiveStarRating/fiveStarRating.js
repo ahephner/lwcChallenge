@@ -1,4 +1,3 @@
-//10
 import { LightningElement, api } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 //import fivestar static resource, call it fivestar
@@ -20,6 +19,7 @@ export default class FiveStarRating extends LightningElement {
   isRendered;
 
   //getter function that returns the correct class depending on if it is readonly
+  @api
   get starClass() {
     return this.readOnly ? READ_ONLY_CLASS : EDITABLE_CLASS;
   }

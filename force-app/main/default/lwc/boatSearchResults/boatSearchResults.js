@@ -100,6 +100,6 @@ export default class BoatSearchResults extends LightningElement {
         }else{
            this.dispatchEvent(new CustomEvent('doneloading'))
         }
-        this.dispatchEvent(evt)
+        
      }
 }
