@@ -19,18 +19,19 @@ export default class BoatTile extends LightningElement {
             return TILE_WRAPPER_SELECTED_CLASS
         }
         return TILE_WRAPPER_UNSELECTED_CLASS
+
      }
     
     // Fires event with the Id of the boat that has been selected.
-    selectBoat(event) {
+    selectBoat() {
         
-        
-        const searchEvent = new CustomEvent('boatselect', {
-            detail:{
-                boatId: this.boat.Id
-            }
+        console.log(this.boat.Id)
+       const searchEvent = new CustomEvent('boatselect', {
+        detail: {
+            boatId: this.boat.Id
+        }
         })
-        this.dispatchEvent(searchEvent); 
+       this.dispatchEvent(searchEvent); 
     }
   }
   
