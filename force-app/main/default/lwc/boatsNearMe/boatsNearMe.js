@@ -30,7 +30,8 @@ export default class BoatsNearMe extends LightningElement {
             );
         
       }else if(data){
-          this.createMapMarkers(data);
+          //data comes back in JSON form 
+          this.createMapMarkers(JSON.parse(data));
       }
       this.isLoading = false; 
   }
@@ -38,10 +39,13 @@ export default class BoatsNearMe extends LightningElement {
   // Controls the isRendered property
   // Calls getLocationFromBrowser()
   renderedCallback() { 
-      if(this.isRendered = false){
+      if(this.isRendered === false){
           this.getLocationFromBrowser() 
       }
       this.isRendered = true;
+
+      //stop the spinner 
+      this.isLoading = false; 
   }
   
   // Gets the location from the Browser
@@ -57,6 +61,8 @@ export default class BoatsNearMe extends LightningElement {
   createMapMarkers(boatData) {
      // const newMarkers = boatData.map(boat => {...});
      // newMarkers.unshift({...});
+     console.log(boatData);
+     
     this.mapMarkers = boatData.map(x =>{
         return { 
             location: {

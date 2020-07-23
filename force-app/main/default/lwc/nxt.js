@@ -8,7 +8,7 @@ import labelDetails from '@salesforce/label/c.Details';
 import labelReviews from '@salesforce/label/c.Reviews';
 import labelAddReview from '@salesforce/label/c.Add_Review';
 import labelFullDetails from '@salesforce/label/c.Full_Details';
-import labelPleaseSelectABoat from '@salesforce/label/c.Please_select_a_boat';
+ 
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 
 import BOAT_ID_FIELD from '@salesforce/schema/Boat__c.Id';

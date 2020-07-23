@@ -62,7 +62,9 @@ export default class BoatMap extends LightningElement {
     this.subscription = subscribe(
       this.messageContext,
       BOATMC,
-      this.boatId = (message) =>  message.recordId,
+      (message) => { 
+       this.boatId = message.recordId
+      },
       { scope: APPLICATION_SCOPE }
 
     )

@@ -48,8 +48,12 @@ export default class BoatSearchResults extends LightningElement {
 
     // Publishes the selected boat Id on the BoatMC.
   sendMessageService(boatId){
-      const payLoad = boatId;
-      publish(this.messageContext, BOATMC, payload); 
+      console.log('boat search message service '+ boatId);
+      
+      publish(this.messageContext, BOATMC, {
+        recordId: boatId,
+        recordData: 'Current Boat Location'
+    });
    }
     
     handleSave(event){

@@ -1,5 +1,5 @@
 import { LightningElement, wire, api } from 'lwc';
-import {APPLICATION_SCOPE, MessageContext, subscribe} from 'lightning/messageService';
+import {APPLICATION_SCOPE, MessageContext, subscribe,unsubscribe} from 'lightning/messageService';
 import {NavigationMixin} from 'lightning/navigation';
 import {getRecord, getFieldValue} from 'lightning/uiRecordApi';
 import labelAddReview from '@salesforce/label/c.Add_Review';
@@ -44,21 +44,34 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement){
   messageContext;
   
   // Subscribe to the message channel
-  subscribeMC(){
+  subscribeMC() {
+    console.log('details subscribe message ');
+    
     this.subscription = subscribe(
-      this.messageContext,
-      BOATMC,
-      this.boatId = (message) => message.recordId,
-      {scope: APPLICATION_SCOPE}
-    )
-  }
+        this.messageContext,
+        BOATMC,
+        (message) => {
+            this.boatId = message.recordId
+        }, {
+            scope: APPLICATION_SCOPE
+        }
+    );
+}
   
   // Calls subscribeMC()
-  connectedCallback(){
-    this.subscribeMC(); 
+  connectedCallback() {
+    console.log('details call back ');
+    
+    if (this.subscription || this.boatId) {
+        return;
+    }
+    this.subscribeMC();
+}
 
-   }
-  
+disconnectedCallback() {
+    unsubscribe(this.subscription);
+    this.subscription = null;
+}
   // Navigates to record page
   navigateToRecordViewPage(){ 
     this[NavigationMixin.Navigate]({
