@@ -53,8 +53,15 @@ export default class BoatsNearMe extends LightningElement {
   getLocationFromBrowser() { 
       navigator.geolocation.getCurrentPosition((position) =>{
           this.latitude =position.coords.latitude;
-          this.longitude = position.coords.longitude; 
-        } )
+          this.longitude = position.coords.longitude;  
+        }, 
+        (error)=>{
+            console.log('error '+error.message);
+            
+        },{
+            enableHighAccuracy: true
+        }
+ )
   }
   
   // Creates the map markers

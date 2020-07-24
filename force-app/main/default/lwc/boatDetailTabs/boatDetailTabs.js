@@ -34,6 +34,8 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement){
   
   // Utilize getFieldValue to extract the boat name from the record wire
   get boatName(){
+    console.log('get boatName in boatDetails');
+    
     return getFieldValue(this.wiredRecord.data, BOAT_NAME_FIELD)
    }
   
@@ -45,12 +47,13 @@ export default class BoatDetailTabs extends NavigationMixin(LightningElement){
   
   // Subscribe to the message channel
   subscribeMC() {
-    console.log('details subscribe message ');
+    //console.log('details subscribe message ');
     
     this.subscription = subscribe(
         this.messageContext,
         BOATMC,
         (message) => {
+                      
             this.boatId = message.recordId
         }, {
             scope: APPLICATION_SCOPE

@@ -23,6 +23,8 @@ export default class BoatSearchResults extends LightningElement {
     @wire(MessageContext)
     messageContext;
 
+//gets fired by api public function updating this.boatTypeId which is passed into wire
+//as $boatTypeId returns results which then set the boat tile and boat table and boat map.
     @wire(getBoats, { boatTypeId: '$boatTypeId' })
     wiredBoats(result){
        this.boats = result;  
@@ -30,6 +32,7 @@ export default class BoatSearchResults extends LightningElement {
        
     }
 
+    //gets called from boatSearch searchBoats function updates boatTypeId
    @api
     searchBoats(boatTypeId) {
         this.isLoading = true;

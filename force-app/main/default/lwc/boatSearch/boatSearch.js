@@ -18,6 +18,7 @@ import { NavigationMixin } from 'lightning/navigation';
     
     // Handles search boat event
     // This custom event comes from the form
+    //passes the boatTypeId to the function searchBoats in Search Results component
     searchBoats(event){ 
       this.boatTypeId = event.detail.boatTypeId;
       this.template.querySelector('c-boat-search-results').searchBoats(this.boatTypeId);
